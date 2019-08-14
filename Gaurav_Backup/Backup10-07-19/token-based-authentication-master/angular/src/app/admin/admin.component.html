@@ -1,0 +1,196 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="sidenav">
+      <img src="assets/images/startbit-logo-icon.png">
+  <a href="#about">About</a>
+
+  <a href="#services">Services</a>
+  <a href="#clients">Clients</a>
+  <a href="#contact">Contact</a>
+  <button (click)="onClick()" class="dropdown-btn">Service 
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="#">My Account</a>
+    <a href="#">Projects</a>
+    <a href="#">Locations</a>
+  </div>
+  <a href="#contact">Search</a>
+</div>
+
+
+
+
+
+
+<div class="main">
+
+
+  
+</div>
+
+<div class="topnav" id="myTopnav">
+    <a href="#home" class="active">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div> 
+    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  </div>
+  </nav>
+
+  <div class="main">
+<div class="container-fluid">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-xs-12 col-md-4 col-sm-4">
+      <button class="form-btn-hollow" routerLink="../newuser">Add New User</button>
+    </div>
+
+      <div class="col-xs-12 col-md-4 col-sm-4">
+
+      <button class="form-btn-hollow" routerLink="../taskCreation">Add New Task</button>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+
+      <mat-table [dataSource]="dataSource" matSort style="width:100%">
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </mat-header-cell>
+          <mat-cell *matCellDef="let row; let i = index  "> {{i + 1 + pageindex  }} </mat-cell>
+        </ng-container>
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="fname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.fname | titlecase}} </mat-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="lname">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.lname | titlecase}} </mat-cell>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="dob">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> DOB </mat-header-cell>
+          <mat-cell *matCellDef="let row" > {{row.dob | date: 'dd-MM-yyyy'}} </mat-cell>
+        </ng-container>
+    
+    
+     <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+          <mat-cell *matCellDef="let row" > {{row.email}} </mat-cell>
+        </ng-container>    
+        
+        
+        <ng-container matColumnDef="Salary">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Salary </mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{row.Salary |  currency:'INR' }} </mat-cell>
+              </ng-container>   
+    
+      <ng-container matColumnDef="phone">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let row" > {{row.phone}} </mat-cell>
+      </ng-container>  
+
+      <ng-container matColumnDef="myimage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+       <mat-cell *matCellDef="let row" ><img class="profileimg" src="{{imageshow + row.myimage}}"></mat-cell>
+     </ng-container>  
+    
+      
+      
+      <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef mat-sort-header style="max-width:20%"> &nbsp; &nbsp; Action </mat-header-cell>
+           <mat-cell *matCellDef="let row" style="max-width:20%"> 
+              <button style="margin-left: 10px;" (click)="onDelete(row._id,i)" class="btndel mat-buttons"><i class="fa fa-trash"></i></button> 
+              <!-- <button (click)="userModel=row; isedit= true" class="btnedit mat-buttons"><i class="fa fa-edit"></i></button> -->
+          </mat-cell>
+         </ng-container>              
+    
+    
+    
+         <td>  <button  (click)="onDelete(data._id,i)" class="btndel"><i class="fa fa-trash"></i></button></td>
+    
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="changepage($event)"></mat-paginator>
+    </div>
+    
+    
+  
+
+
+
+  <mat-tab-group>
+      <mat-tab label="Service">
+        <h2>WE PROVIDE HIGH QUALITY SERVICES</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+          </p>
+      </mat-tab>
+      <mat-tab label="Journals">
+          
+              
+                <div class="row journal_main">
+                  <div class="col-xs-12 col-md-4 col-sm-4 journaldiv">
+                    <img src="assets/images/download.jpeg">
+                    <h4>SO LETS MAKE IT MOST IS BEAUTIFUL</h4>
+                    <h5>To an English person, it will seem like simplified English</h5>
+                  </div>
+              
+                   <div class="col-xs-12 col-md-4 col-sm-4 journaldiv">
+                    <img src="assets/images/download.jpeg">
+                    <h4>WE'RE GONA MAKE DREAMS COMES</h4>
+                    <h5>To an English person, it will seem like simplified English</h5>
+                  </div>
+              
+                   <div class="col-xs-12 col-md-4 col-sm-4 journaldiv">
+                    <img src="assets/images/download.jpeg">
+                    <h4>NEW LIFE CIVILIZATIONS TO BOLDLY</h4>
+                    <h5>To an English person, it will seem like simplified English</h5>
+                  </div>
+                </div>
+             
+              
+      </mat-tab>
+      <mat-tab label="Find US">
+          <div class=col-12>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.162797873805!2d75.73222695024188!3d26.898327983050986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4a07e325381%3A0x8605a270cb78b41f!2sStartbit+IT+Solutions+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1562929961720!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+</div>
+
+
+
+
+

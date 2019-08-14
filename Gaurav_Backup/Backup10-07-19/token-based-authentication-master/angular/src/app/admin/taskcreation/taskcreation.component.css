@@ -1,0 +1,57 @@
+.heading-task{
+    text-align: center;
+    font-style: italic;
+    color: white;
+}
+.header{
+    width: 100%;
+    background-color: blue;
+}
+
+mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%!important;
+}
+.taskMain{
+    background-image: image("assets/images/download.png");
+}
+form {
+    border: 2px solid white;
+    width: 50%;
+    margin: 0px auto;
+    background-color: white;
+    padding: 12px 20px;
+}
+button { 
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+h1{
+    color: white;
+    font-weight: bold;
+    background-color: teal;
+    margin-top: 0px;
+    padding-top: 20px;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    
+
+}
+h1[_ngcontent-c1] {
+    color: white;
+    font-weight: bold;
+  
+}
+
+body{
+    background-color: #b1b1b1!important;
+}
+.form-group{
+font-size: 13px!important;
+}
+.main{
+    background-color: lightgrey;
+}
